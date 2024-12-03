@@ -1,0 +1,127 @@
+/* Base styles for body with Plus Jakarta Sans font */
+#map { height: 400px; width: 80vh; }
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 200 800;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0; /* Ensure no extra margin */
+}
+
+/* Flexbox container to ensure footer stays at the bottom */
+.container {
+    flex: 1;
+}
+
+/* Navbar styling */
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+/* Font Awesome compass icon styling */
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+/* Navbar link styling */
+.nav-link {
+    color: #222222 !important;
+}
+
+/* Footer links styling */
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styling */
+.f-info-links, .f-info-socials, .f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.f-info {
+    text-align: center;
+    display: flex;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; /* Fixed alignment */
+    padding: 20px 0;
+}
+
+/* Card styling */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400 !important; 
+    
+}
+
+/* Listing link styling */
+.listing-link {
+    text-decoration: none;
+}
+
+/* Card overlay effect */
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* Buttons styling */
+.add-btn, .edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* Show image styling */
+.show-img {
+    height: 30vh;
+}
+
+/* Button container styling */
+.btns {
+    display: flex;
+}
+
+/* Show card styling */
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+}
