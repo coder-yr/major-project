@@ -22,7 +22,7 @@ const userRouter = require("./Routes/user.js");
 // Use environment variables for sensitive values
 // const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/Wanderlust";
 
-const dbUrl = process.env.ATLASTDB_URL;
+const dbUrl = process.env.ATLASTDB_URL || "mongodb://127.0.0.1:27017/Wanderlust";
 
 // Connect to MongoDB
 mongoose
@@ -41,11 +41,15 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/Public")));
 
 const store = MongoStore.create({
-  mongoUrl:dbUrl ,
+  mongoUrl: dbUrl,
   crypto: {
     secret: process.env.SECRET,
   },
-  touchAfter: 24 * 3600
+  touchAfter: 24 * 3600,
+  mongoOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
 });
 
 store.on("error" ,() => {
