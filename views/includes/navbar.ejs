@@ -5,6 +5,14 @@
     color: #fff;
     border-radius: 25px;
     padding: 0 1rem 0 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(254, 66, 77, 0.3);
+  }
+  .search-btn:hover{
+    background-color: #e63946 ;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(254, 66, 77, 0.4);
   }
   .search-btn:hover{
     background-color: #fe424d ;
@@ -18,40 +26,162 @@
     border-radius: 25px;
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+  }
+  .search-inp:focus{
+    border-color: #fe424d;
+    box-shadow: 0 0 0 0.2rem rgba(254, 66, 77, 0.25);
+  }
+  
+  .navbar-brand {
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-brand:hover {
+    transform: scale(1.1);
+  }
+  
+  .nav-item {
+    margin: 0 0.5rem;
+  }
+  
+  .nav-link {
+    border-radius: 20px;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(254, 66, 77, 0.1);
+  }
+  
+  .btn-outline-primary {
+    border-color: #fe424d;
+    color: #fe424d;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #fe424d;
+    border-color: #fe424d;
+    transform: translateY(-2px);
+  }
+  
+  .btn-primary {
+    background-color: #fe424d;
+    border-color: #fe424d;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e63946;
+    border-color: #e63946;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .search-inp {
+      padding: 0.5rem 1rem;
+    }
+    
+    .navbar-nav {
+      text-align: center;
+    }
+    
+    .nav-item {
+      margin: 0.25rem 0;
+    }
   }
 </style>
 <nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top">
 
     <div class="container-fluid">
-      <a class="navbar-brand" href="/Listings"><i class="fa-regular fa-compass"></i></a>
+      <a class="navbar-brand" href="/Listings">
+        <i class="fa-regular fa-compass"></i>
+        <span class="ms-2 fw-bold d-none d-md-inline">Wanderlust</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active"  href="/Listings">Explore</a>
-          <!-- <a class="nav-link" href="/Listings">All Listings</a> -->
+          <div class="nav-item">
+            <a class="nav-link active" href="/Listings">
+              <i class="fas fa-compass me-1"></i>Explore
+            </a>
+          </div>
         </div>
 
-        <div class="navbar-nav ms-auto">
+        <div class="navbar-nav ms-auto d-none d-lg-flex">
           <form class="d-flex" role="search">
-            <input class="form-control me-2 search-inp" type="search" placeholder="Search Destination" >
-            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+            <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations..." >
+            <button class="btn search-btn" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>Search
+            </button>
           </form>
         </div>
 
         <div class="navbar-nav ms-auto" >
-          <a class="nav-link" href="/Listings/new">Airbnb your home</a>
+          <div class="nav-item">
+            <a class="nav-link" href="/Listings/new">
+              <i class="fas fa-home me-1"></i>Host your home
+            </a>
+          </div>
           <% if(!currUser) { %>
-            <a class="nav-link active"  href="/signup"><b>Sign up</b></a>
-            <a class="nav-link" href="/login"><b>log in</b> </a>
+            <div class="nav-item">
+              <a class="btn btn-outline-primary me-2" href="/signup">
+                <i class="fas fa-user-plus me-1"></i>Sign up
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="btn btn-primary" href="/login">
+                <i class="fas fa-sign-in-alt me-1"></i>Log in
+              </a>
+            </div>
           <% } %>
           <% if(currUser) { %>
-            <a class="nav-link" href="/logout">logout</a>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                <div class="user-avatar me-2">
+                  <i class="fas fa-user-circle fa-lg"></i>
+                </div>
+                <span class="d-none d-md-inline"><%= currUser.username %></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/profile">
+                  <i class="fas fa-user me-2"></i>Profile
+                </a></li>
+                <li><a class="dropdown-item" href="/my-listings">
+                  <i class="fas fa-list me-2"></i>My Listings
+                </a></li>
+                <li><a class="dropdown-item" href="/bookings">
+                  <i class="fas fa-calendar me-2"></i>My Bookings
+                </a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logout">
+                  <i class="fas fa-sign-out-alt me-2"></i>Logout
+                </a></li>
+              </ul>
+            </div>
           <% } %>
         
         </div>
       </div>
     </div>
-  </nav>
+</nav>
+
+<!-- Mobile Search Bar -->
+<div class="d-lg-none bg-white border-bottom p-3">
+  <form class="d-flex" role="search">
+    <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations..." >
+    <button class="btn search-btn" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </form>
+</div>
